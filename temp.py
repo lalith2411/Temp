@@ -17,14 +17,14 @@ target_hour, target_minute = map(int, args.time.split(':'))
 target_time = now.replace(hour=target_hour, minute=target_minute, second=0, microsecond=0)
 
 # If target time is earlier today, assume it's for tomorrow
-delta = 0
+delta_time = 0
 if target_time < now:
     target_time += datetime.timedelta(days=1)
-    delta = (target_time - now).total_seconds()
+    delta_time = (target_time - now).total_seconds()
 
 # Calculate the time delta
-print("sleeping for", delta,"seconds")
-time.sleep(delta)
+print("sleeping for", delta_time,"seconds")
+time.sleep(delta_time)
 
 subprocess.Popen(
     ["explorer.exe", r"shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App"])
